@@ -485,8 +485,8 @@
         }
 
         .testimonial-card::before {
-            content: """;
-            position: absolute;
+            content: "" ";
+ position: absolute;
             top: 20px;
             left: 25px;
             font-size: 4rem;
@@ -794,24 +794,6 @@
 
         .footer-logo:hover i {
             transform: rotate(10deg);
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 20px;
-            margin: 20px 0 30px;
-        }
-
-        .footer-links a {
-            color: rgba(255, 255, 255, 0.7);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .footer-links a:hover {
-            color: white;
         }
 
         .copyright {
@@ -1151,8 +1133,6 @@
                     <li><i class="fas fa-check-circle"></i> All Current Features (Bulk Resize, ZIP Output, Presets)</li>
                     <li><i class="fas fa-check-circle"></i> Access on Any Browser — Forever</li>
                     <li><i class="fas fa-check-circle"></i> Zero Monthly Charges</li>
-                    <li><i class="fas fa-check-circle"></i> Free Lifetime Updates</li>
-                    <li><i class="fas fa-check-circle"></i> Priority Email Support</li>
                 </ul>
 
                 <a href="#" class="btn">Get Lifetime Access Now</a>
@@ -1248,15 +1228,6 @@
                 <span>PixelFlow Pro</span>
             </div>
             <p>Resize freely. Own forever.</p>
-            
-            <div class="footer-links">
-                <a href="#">Terms of Service</a>
-                <a href="#">Privacy Policy</a>
-                <a href="#">Support</a>
-                <a href="#">Refund Policy</a>
-                <a href="#">Contact Us</a>
-            </div>
-            
             <div class="copyright">© <span id="currentYear">2023</span> PixelFlow Pro. All rights reserved.</div>
         </div>
     </footer>
@@ -1333,7 +1304,7 @@
             const target = +counter.dataset.target;
             const increment = target / 100;
             let count = 0;
-            
+
             const updateCount = () => {
                 if (count < target) {
                     count += increment;
@@ -1343,7 +1314,7 @@
                     counter.innerText = target;
                 }
             }
-            
+
             // Start counting when element is in viewport
             const counterObserver = new IntersectionObserver((entries) => {
                 if (entries[0].isIntersecting) {
@@ -1351,7 +1322,7 @@
                     counterObserver.unobserve(counter);
                 }
             });
-            
+
             counterObserver.observe(counter);
         });
     </script>
