@@ -96,6 +96,18 @@
             box-shadow: 0 8px 20px rgba(255, 107, 107, 0.4);
         }
 
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            box-shadow: none;
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
         .section-title {
             text-align: center;
             margin-bottom: 50px;
@@ -261,6 +273,22 @@
 
         .indicator {
             text-align: center;
+            position: relative;
+            padding: 0 15px;
+        }
+
+        .indicator::before {
+            content: "";
+            position: absolute;
+            right: 0;
+            top: 15%;
+            height: 70%;
+            width: 1px;
+            background: rgba(0, 0, 0, 0.1);
+        }
+
+        .indicator:last-child::before {
+            display: none;
         }
 
         .indicator .count {
@@ -412,6 +440,25 @@
         .demo-step {
             text-align: center;
             max-width: 200px;
+            position: relative;
+        }
+
+        .demo-step-number {
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            background: var(--primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+            z-index: 2;
         }
 
         .demo-icon {
@@ -427,6 +474,18 @@
             color: var(--primary);
             box-shadow: var(--box-shadow);
             transition: var(--transition);
+            position: relative;
+        }
+
+        .demo-icon::after {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 2px solid var(--primary);
+            animation: pulse 2s infinite;
+            opacity: 0;
         }
 
         .demo-step:hover .demo-icon {
@@ -439,6 +498,7 @@
             font-size: 2.5rem;
             color: var(--primary);
             opacity: 0.5;
+            animation: bounce 1.5s infinite;
         }
 
         /* Testimonials */
@@ -528,6 +588,11 @@
             font-size: 1.2rem;
         }
 
+        .testimonial-stars {
+            color: #FFD700;
+            margin-bottom: 15px;
+        }
+
         /* Audience Section */
         .audience-cards {
             display: grid;
@@ -610,6 +675,7 @@
             overflow: visible;
             transition: var(--transition);
             border: 2px solid var(--primary);
+            animation: pulse 2s infinite;
         }
 
         .pricing-card::before {
@@ -772,7 +838,7 @@
         footer {
             background: var(--dark);
             color: white;
-            padding: 60px 0 30px;
+            padding: 80px 0 30px;
             text-align: center;
             position: relative;
         }
@@ -797,11 +863,37 @@
         }
 
         .copyright {
-            margin-top: 30px;
+            margin-top: 40px;
             padding-top: 20px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             opacity: 0.7;
             font-size: 1.1rem;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: var(--transition);
+            z-index: 99;
+            box-shadow: 0 5px 15px rgba(67, 97, 238, 0.3);
+            cursor: pointer;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         /* Animations */
@@ -814,6 +906,35 @@
             to {
                 opacity: 1;
                 transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(67, 97, 238, 0.5);
+            }
+
+            70% {
+                transform: scale(1);
+                box-shadow: 0 0 0 15px rgba(67, 97, 238, 0);
+            }
+
+            100% {
+                transform: scale(0.95);
+                box-shadow: 0 0 0 0 rgba(67, 97, 238, 0);
+            }
+        }
+
+        @keyframes bounce {
+
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            50% {
+                transform: translateX(10px);
             }
         }
 
@@ -859,6 +980,10 @@
                 gap: 25px;
             }
 
+            .indicator::before {
+                display: none;
+            }
+
             .visual-demo {
                 flex-direction: column;
                 gap: 20px;
@@ -866,6 +991,13 @@
 
             .demo-arrow {
                 transform: rotate(90deg);
+            }
+
+            .back-to-top {
+                bottom: 20px;
+                right: 20px;
+                width: 45px;
+                height: 45px;
             }
         }
     </style>
@@ -899,6 +1031,7 @@
 
                 <div class="hero-btns">
                     <a href="#pricing" class="btn btn-lg">Get Lifetime Access Now</a>
+                    <a href="#visualization" class="btn btn-lg btn-outline">See How It Works</a>
                 </div>
 
                 <!-- Progress Indicators -->
@@ -980,7 +1113,7 @@
     </section>
 
     <!-- Visualization Section -->
-    <section class="visualization">
+    <section id="visualization" class="visualization">
         <div class="container">
             <div class="section-title">
                 <h2>How PixelFlow Pro Works</h2>
@@ -989,6 +1122,7 @@
 
             <div class="visual-demo">
                 <div class="demo-step">
+                    <div class="demo-step-number">1</div>
                     <div class="demo-icon">
                         <i class="fas fa-cloud-upload-alt"></i>
                     </div>
@@ -1001,6 +1135,7 @@
                 </div>
 
                 <div class="demo-step">
+                    <div class="demo-step-number">2</div>
                     <div class="demo-icon">
                         <i class="fas fa-sliders-h"></i>
                     </div>
@@ -1013,6 +1148,7 @@
                 </div>
 
                 <div class="demo-step">
+                    <div class="demo-step-number">3</div>
                     <div class="demo-icon">
                         <i class="fas fa-file-download"></i>
                     </div>
@@ -1032,6 +1168,13 @@
 
             <div class="testimonial-grid">
                 <div class="testimonial-card">
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
                     <p class="quote">I used to spend 30 minutes per batch… now it's 3 seconds. This tool has transformed
                         my workflow.</p>
                     <div class="testimonial-author">
@@ -1044,6 +1187,13 @@
                 </div>
 
                 <div class="testimonial-card">
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
                     <p class="quote">I don't have to upload client files anymore — huge win for confidentiality. This is
                         a game-changer!</p>
                     <p class="quote">No subscription? Finally. I own it now.</p>
@@ -1057,6 +1207,13 @@
                 </div>
 
                 <div class="testimonial-card">
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
                     <p class="quote">It feels like Photoshop without the headache or the price. Works offline — even
                         without WiFi. Perfect for my travels!</p>
                     <div class="testimonial-author">
@@ -1228,9 +1385,14 @@
                 <span>PixelFlow Pro</span>
             </div>
             <p>Resize freely. Own forever.</p>
+
             <div class="copyright">© <span id="currentYear">2023</span> PixelFlow Pro. All rights reserved.</div>
         </div>
     </footer>
+
+    <div class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
 
     <script>
         // Update copyright year dynamically
@@ -1282,6 +1444,22 @@
             } else {
                 header.classList.remove('scrolled');
             }
+
+            // Back to top button
+            const backToTop = document.querySelector('.back-to-top');
+            if (window.scrollY > 500) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        // Back to top functionality
+        document.querySelector('.back-to-top').addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
         });
 
         // Hero animations (with fade-in effect)
